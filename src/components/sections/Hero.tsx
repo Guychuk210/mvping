@@ -92,7 +92,6 @@ const Hero = () => {
                   backDelay={2000}
                   loop
                   className="text-gray-500 focus:outline-none w-full text-lg"
-                  placeholder="מה אתה רוצה לבנות?"
                 />
               </div>
               <div className="text-blue-500 ml-4">
