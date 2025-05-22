@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 /**
  * Interface for project item props
@@ -27,7 +28,13 @@ const ProjectItem = ({ name, description, imageUrl, delay = 0 }: ProjectItemProp
     >
       <div className="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
         {imageUrl ? (
-          <img src={imageUrl} alt={name} className="h-full w-full object-cover" />
+          <Image 
+            src={imageUrl} 
+            alt={name} 
+            className="h-full w-full object-cover"
+            width={400}
+            height={192}
+          />
         ) : (
           <div className="text-white text-4xl font-bold">{name.charAt(0)}</div>
         )}
