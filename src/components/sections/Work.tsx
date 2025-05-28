@@ -64,7 +64,7 @@ const SwipeableGallery = ({ images, alt }: SwipeableGalleryProps) => {
     }
   };
 
-  const handleDragEnd = (event: any, { offset, velocity }: PanInfo) => {
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
     const swipe = swipePower(offset.x, velocity.x);
 
     if (swipe < -swipeConfidenceThreshold) {

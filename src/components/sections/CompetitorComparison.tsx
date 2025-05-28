@@ -4,68 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 /**
- * Interface for competitor item props
- */
-interface CompetitorItemProps {
-  name: string;
-  logo: string;
-  issue: string;
-  description: string;
-  delay?: number;
-}
-
-/**
- * Competitor item component with floating animation
- */
-const CompetitorItem = ({ name, logo, issue, description, delay = 0 }: CompetitorItemProps) => {
-  return (
-    <motion.div 
-      className="bg-red-50 border border-red-200 rounded-xl p-6 text-center relative overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      viewport={{ once: true, amount: 0.3 }}
-    >
-      {/* Animated logo */}
-      <motion.div 
-        className="w-16 h-16 mx-auto mb-4 relative"
-        animate={{
-          y: [-5, 5, -5],
-          rotate: [-2, 2, -2],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: delay * 0.5
-        }}
-      >
-        <Image
-          src={`/competitors/${logo}`}
-          alt={`${name} logo`}
-          fill
-          className="object-contain rounded-lg"
-        />
-      </motion.div>
-      
-      <h4 className="font-bold text-red-700 mb-2 text-lg">{name}</h4>
-      <h5 className="font-semibold text-red-600 mb-3 text-sm">{issue}</h5>
-      <p className="text-red-600 text-sm">{description}</p>
-      
-      {/* Falling effect overlay */}
-      <motion.div 
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: [0, 0.1, 0] }}
-        transition={{ duration: 2, delay: delay + 1 }}
-      >
-        <div className="w-full h-full bg-gradient-to-b from-transparent via-red-100 to-transparent"></div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-/**
  * Competitor Comparison section addressing "why do I need you?"
  */
 const CompetitorComparison = () => {

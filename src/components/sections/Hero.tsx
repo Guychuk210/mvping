@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAppContext } from '@/contexts/AppContext';
 
 /**
