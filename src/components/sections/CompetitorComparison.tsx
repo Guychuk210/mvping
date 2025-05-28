@@ -137,64 +137,41 @@ const CompetitorComparison = () => {
             <h3 className="text-2xl md:text-3xl font-bold mb-8">🚫 הבעיות עם הכלים האלה</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <motion.div 
-                className="bg-white/10 rounded-lg p-4"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              <div 
+                className="bg-white/10 rounded-lg p-4 hover:scale-105 transition-transform duration-200"
               >
                 <strong className="block mb-2 text-lg">🎭 תבניות גנריות</strong>
                 <p className="text-sm">
                   קוד שנראה זהה לכולם, בלי התאמה אישית לעסק שלך או לקהל היעד הספציפי
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white/10 rounded-lg p-4"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                style={{ transitionDelay: '0.3s' }}
+              <div 
+                className="bg-white/10 rounded-lg p-4 hover:scale-105 transition-transform duration-200"
               >
                 <strong className="block mb-2 text-lg">🎯 חסר הבנה עסקית</strong>
                 <p className="text-sm">
                   AI יכול לכתוב קוד, אבל לא יעזור לך להבין איך למכור את המוצר, מי הלקוחות שלך ואיך להרוויח
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white/10 rounded-lg p-4"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                style={{ transitionDelay: '0.4s' }}
+              <div 
+                className="bg-white/10 rounded-lg p-4 hover:scale-105 transition-transform duration-200"
               >
                 <strong className="block mb-2 text-lg">🔧 קוד שביר</strong>
                 <p className="text-sm">
                   נראה טוב בהתחלה, אבל מתמוטט ברגע שצריך לשנות או להוסיף תכונות. ואז אתה נתקע לבד!
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white/10 rounded-lg p-4"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                style={{ transitionDelay: '0.5s' }}
+              <div 
+                className="bg-white/10 rounded-lg p-4 hover:scale-105 transition-transform duration-200"
               >
                 <strong className="block mb-2 text-lg">💬 אפס תקשורת</strong>
                 <p className="text-sm">
                   אי אפשר לשאול שאלות, לקבל עצות או להתייעץ על כיוון המוצר. בוט זה בוט 🤷‍♂️
                 </p>
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>

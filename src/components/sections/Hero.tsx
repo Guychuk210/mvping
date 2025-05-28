@@ -64,7 +64,7 @@ const Hero = () => {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-50"
         >
           <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -72,8 +72,8 @@ const Hero = () => {
       </div>
       
       {/* Video overlay for tinting and shadowing */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-blue-50/60 to-white/80 -z-10"></div>
-      <div className="absolute inset-0 bg-black/10 -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white -z-10"></div>
+      <div className="absolute inset-0 bg-black/5 -z-10"></div>
       
       {/* Animated circles - now with more contrast */}
       <motion.div 
