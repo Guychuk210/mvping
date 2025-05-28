@@ -60,7 +60,7 @@ const Header = () => {
           transition={{ duration: 0.5 }}
         >
           <span className={`text-xl font-bold ${isScrolled ? 'text-blue-600' : 'text-blue-600'}`}>
-            גיא לוי
+          MVPing
           </span>
         </motion.div>
         

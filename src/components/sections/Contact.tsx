@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useAppContext } from '@/contexts/AppContext';
 
 /**
  * Contact section with form
  */
 const Contact = () => {
+  // Get the search text from Hero component
+  const { heroSearchText, setHeroSearchText } = useAppContext();
+  
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -19,32 +23,59 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   
+  // Update the idea field when heroSearchText changes
+  useEffect(() => {
+    if (heroSearchText && heroSearchText.trim() !== '') {
+      setFormData(prev => ({ ...prev, idea: heroSearchText }));
+      // Clear the hero search text after using it
+      setHeroSearchText('');
+    }
+  }, [heroSearchText, setHeroSearchText]);
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  // Updated handleSubmit function to actually send emails
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage('');
     
-    // For demo purposes, we'll simulate a form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      // Reset form after submission
-      setFormData({
-        name: '',
-        email: '',
-        idea: '',
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 1500);
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          idea: '',
+        });
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || 'שגיאה בשליחת ההודעה. אנא נסה שוב.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrorMessage('שגיאה בשליחת ההודעה. אנא בדוק את החיבור לאינטרנט ונסה שוב.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
+  // Updated WhatsApp function with correct phone number and message
   const openWhatsApp = () => {
-    const message = encodeURIComponent('היי גיא, אני מעוניין לדבר על פיתוח אפליקציה');
-    window.open(`https://wa.me/+972000000000?text=${message}`, '_blank');
+    const message = encodeURIComponent('היי, ראיתי את העמוד נחיתה שלך');
+    window.open(`https://wa.me/972547855975?text=${message}`, '_blank');
   };
   
   return (
